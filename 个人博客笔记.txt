@@ -1,0 +1,21 @@
+安装mysql驱动：
+go get github.com/go-sql-driver/mysql
+
+安装gorm:
+go get -u github.com/jinzhu/gorm
+
+参考：https://blog.csdn.net/u010277446/article/details/80630578
+
+连接mysql报错1251解决方案
+1.先通过命令行进入mysql的root账户：
+C:\Windows\system32> mysql -uroot -p
+再输入root的密码：
+
+2.更改加密方式：
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
+
+3.更改密码：该例子中 123456为新密码
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+
+4.刷新：
+mysql> FLUSH PRIVILEGES;
